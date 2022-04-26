@@ -1,0 +1,17 @@
+dotenv: .env
+dependencies:
+  - OpenZeppelin/openzeppelin-contracts@4.5.0
+compiler:
+  solc:
+    remappings:
+      - "@openzeppelin=OpenZeppelin/openzeppelin-contracts@4.5.0"
+networks:
+  default: development
+  development:
+    verify: False
+  ganache-local:
+    verify: False
+  rinkeby:
+    verify: True
+  mainnet-fork-dev:
+    verify: False
