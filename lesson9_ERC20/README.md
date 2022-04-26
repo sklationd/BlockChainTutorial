@@ -1,8 +1,8 @@
 # ERC-20
 
-토큰이라고 하는것은 결국 [ERC-20(Token Standard)](https://eips.ethereum.org/EIPS/eip-20) 규격을 만족하는 Smart Contract이다. 문서에 명시되어있는 인터페이스를 직접 다 구현할 수도 있고, [OpenZepplin](https://docs.openzeppelin.com/contracts/4.x/erc20)과 같이 이미 구현 된 라이브러리를 사용해서 작업 할 수도 있다.
+토큰이라고 하는것은 결국 [ERC-20(Token Standard)](https://eips.ethereum.org/EIPS/eip-20) 규격을 만족하는 Smart Contract이다. 문서에 명시되어있는 인터페이스를 직접 다 구현할 수도 있고, [OpenZeppelin](https://docs.openzeppelin.com/contracts/4.x/erc20)과 같이 이미 구현 된 라이브러리를 사용해서 작업 할 수도 있다.
 
-# OpenZepplin ERC-20
+# OpenZeppelin ERC-20
 
 ### `ERC20`
 
@@ -12,7 +12,7 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
 }
 ```
 
-OpenZepplin의 ERC-20 구현체를 살펴보면 위와 같다. `Context`, `IERC20`, `IERC20Metadata` 이렇게 세개의 Contract를 inherit한다. 각각의 부모 Context 역시 살펴보자.
+OpenZeppelin의 ERC-20 구현체를 살펴보면 위와 같다. `Context`, `IERC20`, `IERC20Metadata` 이렇게 세개의 Contract를 inherit한다. 각각의 부모 Context 역시 살펴보자.
 
 ### `Context`
 
