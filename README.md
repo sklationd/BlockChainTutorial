@@ -2,24 +2,36 @@
 
 - 각 레슨에서 사용하는 OpenZeppelin 버전이 다르니 `settings.json`과 `brownie-config.yaml` 파일을 적절히 수정해주어야함
 
-### 회사
+## Overall Concepts
 
-```json
-{
-  "solidity.remappings": [
-    "@chainlink/=/Users/gimseongyu/.brownie/packages/smartcontractkit/chainlink-brownie-contracts@1.1.1",
-    "@openzeppelin/=/Users/gimseongyu/.brownie/packages/OpenZeppelin/openzeppelin-contracts@4.5.0"
-  ]
-}
-```
+### 해쉬란?
 
-### 집
+- 해시 함수 (짦게는 그냥 해시)는 임의의 길이를 갖는 임의의 데이터를 고정된 길이의 데이터로 매핑하는 단방향 함수를 말한다. 쉽게 말해, 아무리 큰 숫자를 넣더라도 정해진 크기의 숫자가 나오는 함수이다. 예를 들면 어떤 숫자를 10으로 나누었을 때 그 나머지를 구하는 함수도 해시 함수이다.
 
-```json
-{
-  "solidity.remappings": [
-    "@chainlink/=/Users/skla/.brownie/packages/smartcontractkit/chainlink-brownie-contracts@1.1.1",
-    "@openzeppelin/=/Users/skla/.brownie/packages/OpenZeppelin/openzeppelin-contracts@4.5.0"
-  ]
-}
-```
+### 블록이란?
+
+- 블록은 정말 단순하게만 보면 그저 하나의 문자열에 불과하다. 다만 이 문자열은 **특정한 형태**를 만족하고, 해시함수(주로 SHA-256)를 적용 했을 때, **특정한 조건**을 만족하는 데이터로 맵핑이 된다. 각각의 요소에 대해 살펴보자.
+
+  #### _형태_
+
+  - 블록은 주로 블록 넘버, 블록이 담고 있는 데이터, 후술할 특정한 조건을 만족하기 위해 채굴자가 찾아야하는 데이터의 합(Nonce)으로 구성 된다.
+
+  #### _조건_
+
+  - 블록체인에 블록이 무분별하게 추가되는 것을 막기 위해 채굴자는 블록의 해쉬값이 특정 조건을 만족하도록 하는(해쉬 값이 특정 값 이하여야 한다던지..) Nonce값을 찾아야한다. 비트코인의 발행량이 정해져 있다고 말하는 것도 이 특정 조건이 블록이 많아 질 수록 더욱 어려워지기 때문이다.
+
+### 블록체인이란?
+
+- 위에서 정의한 블록의 데이터에 이전 블록의 해쉬도 포함을 시키면 모든 블록이 해쉬에 의해서 연결 된 상태가 되기 때문에(중간 블록 하나의 숫자하나만 바뀌어도 그 뒤의 모든 블록의 해쉬값이 조건을 만족하지 못하게 됨, 뒤에 이어지는 블록은 숫자가 바뀐 블록의 해쉬값을 데이터로 포함하기 때문) 블록체인이 된다!
+
+### Demo
+
+- 위에서 설명한 해쉬, 블록, 블록체인의 개념을 직관적으로 이해 할 수 있는 [사이트](https://andersbrownworth.com/blockchain/)
+
+### 이더리움은 비트코인과 뭐가 다른가?
+
+-
+
+## 좀 더 기술적인 이야기
+
+-
