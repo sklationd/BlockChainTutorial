@@ -1,8 +1,23 @@
 from os import link
-from brownie import accounts, config, network
+from brownie import (
+    accounts,
+    config,
+    Contract,
+    network,
+    VRFCoordinatorMock,
+    LinkToken,
+)
 
 FORKED_LOCAL_ENVIRONMENTS = ["mainnet-fork", "mainnet-fork-dev"]
 LOCAL_BLOCKCHAIN_ENVIRONMENTS = ["development", "ganache-local"]
+OPENSEA_URL = "https://testnets.opensea.io/assets/{}/{}"
+
+
+BREED_MAPPING = {0: "PUG", 1: "SHIBA_INU", 2: "ST_BERNARD"}
+
+
+def get_breed(breed_number):
+    return BREED_MAPPING[breed_number]
 
 
 def get_account(index=None, id=None):
@@ -19,3 +34,52 @@ def get_account(index=None, id=None):
         else:
             return accounts.load("sklationd")
     # return accounts.add(config["wallets"]["from_key"])
+
+
+contract_to_mock = {
+    "vrf_coordinator": VRFCoordinatorMock,
+    "link_token": LinkToken,
+}
+
+
+def get_contract(contract_name):
+    contract_type = contract_to_mock[contract_name]
+    if network.show_active() in LOCAL_BLOCKCHAIN_ENVIRONMENTS:
+        if len(contract_type) <= 0:
+            deploy_mocks()
+        contract = contract_type[-1]
+    else:
+        contract_address = config["networks"][network.show_active()][contract_name]
+        contract = Contract.from_abi(
+            contract_type._name, contract_address, contract_type.abi
+        )
+
+    return contract
+
+
+def deploy_mocks():
+    account = get_account()
+
+    # LinkToken
+    if len(LinkToken) <= 0:
+        print("Deploying LinkToken")
+        LinkToken.deploy({"from": account})
+    link_token = LinkToken[-1]
+
+    # VRFCoordinatorMock
+    if len(VRFCoordinatorMock) <= 0:
+        print("Deploying VRFCoordinatorMock")
+        VRFCoordinatorMock.deploy(link_token.address, {"from": account})
+
+
+def fund_with_link(
+    contract_address, account=None, link_token=None, amount=100000000000000000
+):
+    account = account if account else get_account()
+    link_token = link_token if link_token else get_contract("link_token")
+    # link_token_contract = interface.LinkTokenInterface(link_token.address)
+    # tx = link_token_contract.transfer(contract_address, amount, {"from": account})
+    tx = link_token.transfer(contract_address, amount, {"from": account})
+    tx.wait(1)
+    print("Fund Contract!")
+    return tx
