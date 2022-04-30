@@ -1,7 +1,7 @@
 {
   "solidity.remappings": [
     "@chainlink/=/Users/skla/.brownie/packages/smartcontractkit/chainlink-brownie-contracts@1.1.1",
-    "@openzeppelin/=/Users/skla/.brownie/packages/OpenZeppelin/openzeppelin-contracts@3.4.0",
+    "@openzeppelin/=/Users/skla/.brownie/packages/OpenZeppelin/openzeppelin-contracts@4.1.0",
     "@aave/=/Users/skla/.brownie/packages/aave/protocol-v2@1.0.1"
   ]
 }
