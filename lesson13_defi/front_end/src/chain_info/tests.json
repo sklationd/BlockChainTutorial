@@ -1,0 +1,72 @@
+{
+  "contracts": {
+    "DAppToken": "aa408a7100c5f7591b9288570f9d57a410102e91",
+    "MockDAI": "80f6952748bb0b4dad0fafc96420422a7300bf1e",
+    "MockERC20": "8e8acdd995be65a69a2e233a5c676546d6fc75c5",
+    "MockV3Aggregator": "9e734e161b5cafcca52a917f10266f5a8bc05b28",
+    "MockWETH": "6d6e5c08c81e483ad4f4abb5e19f06b8ad6f76b8",
+    "OpenZeppelin/openzeppelin-contracts@4.2.0/ERC20": "05b44f80e08900a7aa6bf3a608b9deb527af43d3",
+    "TokenFarm": "98bbd6f65954ebfd4bf935e79dd1eaf849cfba8f"
+  },
+  "tests": {
+    "tests/integration/test_token_farm_integration.py": {
+      "coverage": false,
+      "isolated": false,
+      "results": ".",
+      "sha1": "6bce4283a8c29569281c1340b294ada95afb0951",
+      "txhash": []
+    },
+    "tests/unit/test_token_farm.py": {
+      "coverage": false,
+      "isolated": false,
+      "results": ".........",
+      "sha1": "0cce09a20e01f5a25a41e37a41b80cf3f62616b7",
+      "txhash": [
+        "85ebec13d628448ab2eb98351f9d8eb28d5db8c9",
+        "fcd82f66b7501ac4098cf65152674fd495eecd77"
+      ]
+    }
+  },
+  "tx": {
+    "85ebec13d628448ab2eb98351f9d8eb28d5db8c9": {
+      "TokenFarm": {
+        "0": [
+          [],
+          [],
+          []
+        ],
+        "2": [
+          [],
+          [],
+          []
+        ],
+        "4": [
+          [],
+          [],
+          []
+        ]
+      }
+    },
+    "fcd82f66b7501ac4098cf65152674fd495eecd77": {
+      "TokenFarm": {
+        "0": [
+          [],
+          [],
+          []
+        ],
+        "2": [
+          [
+            7
+          ],
+          [],
+          []
+        ],
+        "4": [
+          [],
+          [],
+          []
+        ]
+      }
+    }
+  }
+}
